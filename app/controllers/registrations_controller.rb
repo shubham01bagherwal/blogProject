@@ -16,7 +16,9 @@ class RegistrationsController < ApplicationController
       @user.avatar.attach(params[:avatar]) if params[:avatar].present?
       if @user.save
         session[:current_user] = @user
-        redirect_to root_path, notice: 'Successfully created account'
+        UserMailer.registration_confirmation(@user).deliver
+        flash[:success] = "please confirm your email address to continue"
+        redirect_to root_path, notice: 'please confirm your email address to continue'
       else
         redirect_to '/registration/new', notice: @user.errors.full_messages.first
       end
@@ -33,6 +35,18 @@ class RegistrationsController < ApplicationController
         redirect_to registrations_edit_path, notice: 'Successfully update account'
       else
         redirect_to welcome_error_path, notice: 'problem updateing user'
+      end
+    end
+
+    def confirm_email
+      user = User.find_by_confirm_token(params[:id])
+      if user 
+        user.email_activate
+        flash[:sucess] = "Welcome to the App please sign in to continue"
+        redirect_to sign_in_path
+      else
+        flash[:error] = "User does not exist"
+        redirect_to root_path
       end
     end
     
