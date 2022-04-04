@@ -12,15 +12,9 @@ Rails.application.routes.draw do
     
     # path for the likes button
     resources :like, only: [ :create, :destroy]
-
+    
   end
 
-  resources :registrations do 
-    member do 
-      get :confirm_email
-    end 
-  end 
-    
   # Extra paths
   get  'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
@@ -34,5 +28,4 @@ Rails.application.routes.draw do
   delete 'logout',   to: 'sessions#destroy'
   get    'password', to: 'passwords#edit',  as: 'edit_password'
   patch  'password', to: 'passwords#update'
-
 end

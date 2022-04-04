@@ -1,7 +1,7 @@
 <div class="container  comment-section" style="overflow-y: auto; padding-left: 40px;">
 
+
 <% commentable.comments.order('created_at desc').each do |comment| %>
-<p></p>
 
 <div id="<%= "#{dom_id(comment)}_item" %>">
 
@@ -47,4 +47,5 @@
     </div>
   </div>
 <% end %>
+
 </div>
