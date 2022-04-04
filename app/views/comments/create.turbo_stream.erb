@@ -1,0 +1,15 @@
+<%= turbo_stream.update "comments_of_blog" do %>
+	<%= render 'blogs/show_comment', commentable: @blog, form_of: 'blog' %>
+<% end %>
+
+
+<%= turbo_stream.update "new_comment_for_blog" do %> 
+	<%= render "blogs/new_comment", commentable: @blog, form_of: 'blog' %>
+<% end %>
+
+
+<%= turbo_stream.update "comment_count" do %> 
+	
+	<strong>Comments:</strong>
+	<%= @blog.comments.count %>
+<% end %>

@@ -1,0 +1,48 @@
+<h1>Update Profile</h1>
+  <%= form_with model: @user, url: registrations_update_path do |f| %>
+    <div class="form-group ">
+      <p>
+        <%= f.label 'first_name:' %><br>
+        <%= f.text_field :first_name, class: 'form-text text-muted', placeholder: "Enter First Name" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'last_name:' %><br>
+        <%= f.text_field :last_name, class: 'form-text text-muted', placeholder: "Enter Last Name" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'address:' %><br>
+        <%= f.text_field :address, class: 'form-text text-muted', placeholder: "Enter Address" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'city:' %><br>
+        <%= f.text_field :city, class: 'form-text text-muted', placeholder: "Enter City" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'Email Address:' %><br>
+        <%= f.text_field :email, class: 'form-text text-muted', placeholder: "Enter Email Address:" %>
+      </p>
+    </div>    
+        
+      <%= image_tag @current_user.avatar.variant(resize_to_limit: [30 , 30]) if @current_user.avatar.attached? %>
+    <div class="form-group ">
+      <p>
+        <%= f.label "Select a Profile Picture", style: "display: block" %>
+        <%= f.file_field :avatar, class: "btn btn-secondary" %>          
+      </p>
+    </div>    
+
+    <p>
+    <%= f.submit 'Update', class: "btn btn-primary" %>
+    </p>
+  <% end %>
+<%= link_to "Edit Password", edit_password_path, class: "btn btn-outline-primary" %>
+
+<%= link_to 'back', :back, class: "btn btn-outline-primary" %>

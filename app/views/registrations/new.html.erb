@@ -1,0 +1,60 @@
+<div class="p-4">
+<h1>Sign Up</h1>
+  <%= form_with model: @user, url: sign_up_path do |f| %>
+    <div class="form-group ">
+      <p>
+        <%= f.label 'first_name:' %><br>
+        <%= f.text_field :first_name, class: 'form-text ', placeholder: "Enter First Name" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'last_name:' %><br>
+        <%= f.text_field :last_name, class: 'form-text', placeholder: "Enter Last Name" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'address:' %><br>
+        <%= f.text_field :address, class: 'form-text', placeholder: "Enter Address" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'city:' %><br>
+        <%= f.text_field :city, class: 'form-text', placeholder: "Enter City" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'Email Address:' %><br>
+        <%= f.text_field :email, class: 'form-text', placeholder: "Enter Email Address:" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'password:' %><br>
+        <%= f.password_field :password, class: 'form-text', placeholder: "Enter Password" %>
+      </p>
+    </div>    
+    <div class="form-group ">
+      <p>
+        <%= f.label 'password_confirmation:' %><br>
+        <%= f.password_field :password_confirmation, class: 'form-text', placeholder: "Enter Password Again" %>
+      </p>
+    </div>    
+    <div>
+      <p>
+        <%= f.label "Select a Profile Picture", style: "display: block" %>
+        <%= f.file_field :avatar, class: "btn btn-secondary" %>
+      </p>
+    </div>
+  
+    <p>
+    <%= f.submit 'Sign Up', class: "btn btn-primary" %>
+    </p>
+  <% end %>
+
+
+<%= link_to 'back', :back , class: "btn btn-primary"%>
+</div>

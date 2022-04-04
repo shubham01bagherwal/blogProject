@@ -1,0 +1,48 @@
+<div class="container-fluid py-4" >
+  <div class="row">
+    <div class="col-10">
+      <div class="row">
+        <div >
+          <h4>
+            <strong>Blog Heading :</strong>
+            <%= blog.name %>
+          </h4>
+        </div>
+      </div>
+      <div class="row">
+        <div >
+          <h5>
+            <strong>By :</strong>
+            <%= blog.user.first_name %>
+          </h5>
+        </div>
+      </div>
+      <div class=" row overflow-hidden" style="height: 50px;">  
+      <p>
+        <strong></strong>
+        <%= blog.body %>
+      </p>
+    </div>
+    </div>
+    <div class="col-2">
+      <% if blog.image.attached? %>
+        <%= image_tag blog.image.variant(resize_to_limit: [170, 120]) %>
+      <% end %>
+    </div>
+  </div>
+        <%= link_to "Continue Reading This Blog", blog, class: "link-primary" %>
+    <div class="row">  
+      <div class="display-inline" id = "like_count">
+        <strong>Likes : </strong>
+        <%= blog.likes.count %>
+      </div>
+      <div class="display-inline">
+        <strong>Comments : </strong>
+        <%= blog.comments.count %>
+      </div>           
+      <div class="display-inline">
+        <strong> Created At : </strong>
+        <%= blog.created_at.strftime(" %d %b %Y") %>
+      </div>        
+    </div>
+</div>

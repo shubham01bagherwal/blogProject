@@ -1,0 +1,52 @@
+<div class="container-fluid " >
+  <div class="row">    
+    <div class="col">
+      <div class="row">
+        <div >
+          <h4>
+            <strong>Blog Heading :</strong>
+            <%= blog.name %>
+          </h4>
+        </div>
+      </div>
+      <div class="row">
+        <div >
+          <h5>
+            <strong>By :</strong>
+            <%= blog.user.first_name %>
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-1">
+      <% if blog.image.attached? %>
+        <%= image_tag blog.image.variant(resize_to_limit: [70, 70]) %>
+      <% end %>
+    </div>
+      <div>  
+        <p> 
+          <strong></strong>
+          <%= simple_format blog.body %>
+        </p>
+      </div>
+      
+      <div class="row">
+        <div class="col-1" id = "like_count">
+          <strong>Likes:</strong>
+          <%= blog.likes.count %>
+        </div>
+        <div class="display-inline" id = "comment_count">
+          <strong>Comments : </strong>
+          <%= blog.comments.count %>
+        </div>           
+        <div class="display-inline">
+          <strong> Created At : </strong>
+          <%= blog.created_at.strftime(" %d %b %Y") %>
+        </div>  
+
+        <div id="likes" >
+          <%= render 'like_partials', blog: blog %>
+        </div>
+      </div> 
+  </div>
+</div>

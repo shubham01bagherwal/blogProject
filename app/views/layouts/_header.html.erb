@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top " id="header">
+  <div class="container-fluid ">
+    <%= link_to 'BlogApp', blogs_path,class: "navbar-brand" %>  
+    <div class="navbar navbar-expand d-flex .px-4 " id="navbarNav">
+      <ul class="navbar-nav  ms-auto">
+        <li class="nav-item active ">          
+          <%= link_to 'Home', blogs_path, class: "nav-link" %>        
+        </li>
+        <li class="nav-item">
+          <%= link_to 'show my blogs', blogs_path(page_selection: "current_user_blogs"), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "create New blog", new_blog_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Edit My Profile', registrations_edit_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <ul class="nav justify-content-end">
+        <li class="nav-link" style="color:white;">
+          Logged in as: <%= @current_user.first_name %>
+          <%= image_tag @current_user.avatar.variant(resize_to_limit: [30 , 30]) if @current_user.avatar.present? %>
+        </li>
+        <li class="nav-item navbar-nav">
+          <%= button_to 'Logout', logout_path, method: :delete, class: "btn btn-danger", onclick: "return confirmDestroy('Are you sure want to Logout?')"  %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function confirmDestroy(message) {
+    if (!confirm(message)) {
+      return false;
+    }
+  }
+</script>

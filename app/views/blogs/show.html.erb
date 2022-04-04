@@ -1,0 +1,35 @@
+<!-- show this blog -->
+<%= render 'blog', blog: @blog %>
+<!-- Logic to check the user and blog_user is the same -->
+<div class="d-flex p-1">
+  <% if (@current_user.id == @blog.user_id) %>
+    <div class="p-1">
+      <%= link_to "Edit this blog", edit_blog_path(@blog), class: "btn btn-primary" %> 
+    </div>
+    <div class="p-1">
+      <%= button_to "Destroy this blog", @blog, method: :delete, class: "btn btn-danger", onclick: "return confirmDestroy('Are you sure ?')"  %>
+    </div>
+  <% end %>
+  <div class="p-1">
+    <%= link_to "Back to blogs", blogs_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<!-- logic for comments -->
+<!-- render add comment by the new comment partials -->
+<div id="new_comment_for_blog">
+  <%= render :partial=>"blogs/new_comment", locals: {commentable: @blog, form_of: 'blog'} %>
+</div>
+<div id="comments_of_blog" style="overflow-y: auto; max-height: 150vh;">
+  <!-- Print all Comments on Blogs -->
+  <%= render partial: 'blogs/show_comment', locals: { commentable: @blog }%>
+</div>
+
+<script>
+  function confirmDestroy(message) {
+    if (!confirm(message)) {
+      return false;
+    }
+  }
+</script>
+

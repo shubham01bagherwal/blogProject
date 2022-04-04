@@ -1,0 +1,42 @@
+<!-- blog index heading part-->
+
+
+<p>
+  <div class="row">
+    <div class="col-8">
+      <h1>Here Are Some Interesting Blogs For You !!</h1>
+    </div>
+    <div class="col">
+      <%= form_with url: blogs_path, method: :get, class: "form-inline my-2 my-lg-0" do |form| %>
+        <%= form.text_field :search, class: "form-control mr-sm-2", placeholder: "Search", aria_label:"Search", value: params[:search] %>
+        <%= form.hidden_field :page_selection, value: params[:page_selection] %>
+      <% end %>
+    </div>
+  </div>
+</p>
+<!-- pagination logic -->
+
+  <div class="row margin-twenty5-zero pagination-row">
+    <div class="padding-zero"> 
+      <ul class="pagination">
+        <li class="disabled">
+          <!-- logic that add pages (pagination) to application -->
+          <div class = "container-fluid" id="blogs">
+            <%= will_paginate(@blogs,:previous_label => "Previous", :next_label => "Next;",:class=>"small-font",:outer_window => 1,:inner_window => 1) %>
+            <!-- print blogs one by one -->
+            <% @blogs.each do |blog| %>
+              <%= render partial: "index_blogs", locals: { blog: blog }  %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<div class="col-lg-4 col-md-4 col-sm-5 col-xs-6 pagination-info">
+  <span class="pull-right"><%= page_entries_info(@blogs) %></span>
+</div>
+
+<div class=""> <%= will_paginate(@blogs,:previous_label => "Previous", :next_label => "Next;",:class=>"small-font",:outer_window => 1,:inner_window => 1) %></div>
+
+

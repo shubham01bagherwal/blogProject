@@ -1,0 +1,20 @@
+<!-- form to create a comment in blogs -->
+<div class = "row" >
+  <% if form_of == 'comment' %>
+    <% url = "/blogs/#{@blog.id}/comments/#{commentable.id}/comments" %>
+  <% else %>
+    <% url = "/blogs/#{@blog.id}/comments" %>
+  <% end %>
+    <%= form_with url: "#{url}", method: :post, class: "" do |form| %>
+      <div class="row">
+        <div class="col">
+          <%= form.text_field :comment_body, class: "w-100", placeholder: "reply here" %>
+        </div>
+        <div class="col-2">
+          <%= form.submit 'comment', class: 'btn btn-primary btn-sm' %>
+        </div>
+      </div>
+    <% end %>
+    
+
+</div>

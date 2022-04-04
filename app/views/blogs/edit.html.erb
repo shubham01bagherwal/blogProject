@@ -1,0 +1,16 @@
+<h1>Editing blog</h1>
+
+  <!-- Cheak User And Blog User Is Same -->
+
+  <% if @blog.user.id == @current_user.id %>
+    <%= render "form", blog: @blog %>
+  <% else %>
+    <strong>You Don't have Permission To Change This Blog</strong>
+  <% end %>
+<br>
+
+
+<div>
+  <%= link_to "Show this blog", @blog, class: "btn btn-primary" %> |
+  <%= link_to "Back to blogs", blogs_path, class: "btn btn-primary" %>
+</div>
