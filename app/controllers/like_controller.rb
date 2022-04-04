@@ -1,7 +1,6 @@
 class LikeController < ApplicationController
 	before_action :set_blog, only: %i[ create destroy ]
 
-
 	def create
 		@like = @blog.likes.new
 		@like.user_id = @current_user.id
@@ -36,11 +35,9 @@ class LikeController < ApplicationController
 		#{@blog.likes.count}"
 	end
 
-
 	def set_blog
     @blog = Blog.find(params[:blog_id])
   end
-
 
 end
 

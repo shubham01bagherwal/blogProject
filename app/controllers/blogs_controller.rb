@@ -25,7 +25,7 @@ class BlogsController < ApplicationController
       if @blog.save
         format.html { redirect_to blog_path(@blog), notice: "Blog was successfully created." }
       else
-        format.html { render welcome_error_path, status: :unprocessable_entity }
+        format.html { render blog_path, notice: "Something went worng." }
       end
     end
   end
@@ -35,7 +35,7 @@ class BlogsController < ApplicationController
       if @blog.update(blog_params)
         format.html { redirect_to blog_path(@blog), notice: "Blog was successfully updated." }
       else
-        format.html { render welcome_error_path, status: :unprocessable_entity }
+        format.html { render blog_path, notice: "Something went worng." }
       end
     end
   end

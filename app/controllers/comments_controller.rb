@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 
   def create
     @comment = (params[:comment_id].nil? ? @blog.comments.new(comment_params) : get_commentable.comments.new(comment_params))
-   
     @comment.user_id = @current_user.id
     respond_to do |format|
       if @comment.save
@@ -15,7 +14,6 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def destroy
     @comment.destroy
     respond_to do |format|
@@ -24,12 +22,10 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def comment_params
       params.permit(:comment_body)
     end
