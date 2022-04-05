@@ -6,7 +6,7 @@ class PasswordsController < ApplicationController
   
   def update
     if @current_user.update(password_params)
-      redirect_to root_path, notice: 'Password Updated'
+      redirect_to registrations_update_path, notice: 'Password Updated'
     else
       redirect_to edit_password_path, notice: @current_user.errors.full_messages.first
     end

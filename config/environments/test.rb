@@ -57,4 +57,20 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+
+ 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => '127.0.0.1', :port => '3000'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: '25',
+    user_name: 'apikey',
+    password: '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',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
 end

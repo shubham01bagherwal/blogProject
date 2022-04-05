@@ -12,8 +12,12 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user.present? && user.authenticate(params[:password])
-      session[:current_user] = user
-      redirect_to blogs_path, notice: 'Logged in successfully'
+      if user.email_confirmed == false
+        redirect_to root_path, notice: 'please confirm your mail first'
+      else
+        session[:current_user] = user
+        redirect_to blogs_path, notice: 'Logged in successfully'
+      end
     else
       redirect_to root_path, notice: 'Invalid email or password'
     end

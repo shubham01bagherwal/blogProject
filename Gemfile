@@ -29,6 +29,7 @@ gem "tailwindcss-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+gem 'mailcatcher'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -49,9 +50,9 @@ gem "bootsnap", require: false
 # for id hashing in url
   gem "hashid-rails", "~> 1.0"
 
- gem 'device'
+ gem 'devise'
 
-
+ gem 'pg'
 # for pagination
   gem "will_paginate"
 

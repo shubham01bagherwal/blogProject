@@ -15,12 +15,21 @@ Rails.application.routes.draw do
     
   end
 
+
+
   # Extra paths
   get  'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
 
   get   'registrations/edit',   to: 'registrations#edit'
   patch 'registrations/update', to: 'registrations#update'
+
+  
+  
+  get 'registrations/confirm_email', to: 'registrations#confirm_email', as: 'confirm_email'
+  
+  
+
 
 
   get    'sign_in',  to: 'sessions#new'
