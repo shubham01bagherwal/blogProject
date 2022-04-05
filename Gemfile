@@ -51,7 +51,7 @@ gem "bootsnap", require: false
   gem "hashid-rails", "~> 1.0"
 
  gem 'devise'
-
+ gem 'figaro'
  gem 'pg'
 # for pagination
   gem "will_paginate"
@@ -77,6 +77,15 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+group :development do 
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
+end
+
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
