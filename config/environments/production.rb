@@ -38,7 +38,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon_prod
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -97,11 +97,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
-    port: '25',
-    user_name: 'apikey',
-    password: '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',
+    port: '587',
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"],
     authentication: 'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
   }
-
 end

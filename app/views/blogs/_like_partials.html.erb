@@ -1,14 +1,12 @@
 <div id="<%="#{dom_id(blog)}_like"%>">
-
-    <% like = blog.likes.find_by(user_id: @current_user.id) %>
-      <% if like.present? %>
-        <%= form_with url: blog_like_path(blog.id, like.id), method: :delete, format: :turbo_stream do |form| %>
-          <%= form.submit "Unlike", class: 'btn btn-primary'  %>
-        <% end %>
-      <% else %>
-        <%= form_with url: blog_like_index_path(blog.id), method: :post, format: :turbo_stream do |form| %>
-          <%= form.submit "like", class: 'btn btn-outline-primary'  %>
-        <% end %>
+  <% like = blog.likes.find_by(user_id: @current_user.id) %>
+  <% if like.present? %>
+    <%= form_with url: blog_like_path(blog.id, like.id), method: :delete, format: :turbo_stream do |form| %>
+      <%= form.submit "Unlike", class: 'btn btn-primary'  %>
     <% end %>
-  
+  <% else %>
+    <%= form_with url: blog_like_index_path(blog.id), method: :post, format: :turbo_stream do |form| %>
+      <%= form.submit "like", class: 'btn btn-outline-primary'  %>
+    <% end %>
+  <% end %>
 </div>

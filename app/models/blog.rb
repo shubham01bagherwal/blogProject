@@ -16,4 +16,4 @@ class Blog < ApplicationRecord
     where('name like ?', "%#{search}%")
   }
 
-end
+end 

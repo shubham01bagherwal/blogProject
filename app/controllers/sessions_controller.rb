@@ -4,16 +4,16 @@ class SessionsController < ApplicationController
   layout 'special'
 
 	def new
-      if session[:current_user]
-        redirect_to blogs_path, notice: 'already loged in'
-      end
+    if session[:current_user]
+      redirect_to blogs_path, notice: 'already loged in'
+    end
 	end
     
   def create
     user = User.find_by(email: params[:email])
     if user.present? && user.authenticate(params[:password])
       if user.email_confirmed == false
-        redirect_to root_path, notice: 'please confirm your mail first'
+        redirect_to root_path(issue: user.id), notice: 'please confirm your mail first'
       else
         session[:current_user] = user
         redirect_to blogs_path, notice: 'Logged in successfully'

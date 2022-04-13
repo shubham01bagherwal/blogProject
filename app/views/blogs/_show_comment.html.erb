@@ -2,50 +2,53 @@
 
 
 <% commentable.comments.order('created_at desc').each do |comment| %>
-
 <div id="<%= "#{dom_id(comment)}_item" %>">
+  <div class="container-fluid mt-5">
+      <div class="">
+          <div class="col-md-8">
+              <div class="d-flex flex-column comment-section">
+                  <div class="bg-white p-2">
+                      <div class="d-flex flex-row user-info ">
+                        <%= image_tag comment.user.avatar.variant(resize_to_limit: [50, 50]) if comment.user.avatar.attached?%>
+                          <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">
+                            <%= comment.user.first_name %>                          
+                          </span><span class="date text-black-50">Shared publicly - <%= comment.created_at.strftime(" %d %b %Y") %></span></div>
+                      </div>
+                      <div class="mt-1 pl-3 ">
+                          <p class="comment-text">
+                            Say:  <%= comment.comment_body %>
+                          </p>
+                          <%= comment.comments.count %> : Reply 
+                      </div>
+                  </div>
+                  
+                  <div class="bg-light p-2">
+                      <div class="d-flex flex-row align-items-start">
+                        <%= image_tag @current_user.avatar.variant(resize_to_limit: [30 , 30]) if @current_user.avatar.present? %>
+                        <%= render :partial=>"blogs/new_comment", locals: { commentable: comment, form_of: 'comment'} %>
+                      </div>
 
-    <div class=" rounded">
-      <div class="shadow-lg rounded" style="background-color: #998e8e">
-        <div class="row" id="comments">
-          <div class="col-1">
-            <%= image_tag comment.user.avatar.variant(resize_to_limit: [50, 50]) if comment.user.avatar.attached?%>
-          </div>
-          <div class="col">
-            <div class="row" id="comments" style="height: 20px">
-              <p>
-                <strong><%= comment.user.first_name %></strong>
-                : <%= comment.comment_body %>
-              </p>
-            </div>
-            <div class="row d-flex" id="comments">
-
-              <div class="">
-                <strong><%= comment.comments.count %> : Reply </strong>
-                  <% if  comment.user.id == @current_user.id %>
-                    <% if commentable.class.name == 'Blog' %>
-                      <%= button_to 'Delete Comment',[commentable , comment ], remote: true, turbo: false, method: :delete, class: "btn btn-primary btn-sm" %>
-                    <% else %>
-                      <%= button_to 'Delete Comment',[@blog, commentable , comment ], remote: true, turbo: false, method: :delete, class: "btn btn-primary btn-sm" %>
+                    <% if  comment.user.id == @current_user.id %>
+                      <% if commentable.class.name == 'Blog' %>
+                        <%= button_to 'Delete Comment',[commentable , comment ], remote: true, turbo: false, method: :delete, class: "btn btn-primary btn-sm" %>
+                      <% else %>
+                        <%= button_to 'Delete Comment',[@blog, commentable , comment ], remote: true, turbo: false, method: :delete, class: "btn btn-primary btn-sm" %>
+                      <% end %>
                     <% end %>
-                  <% end %>
+                  </div>
               </div>
-            </div>
-            <div class="comment_reply" id = "comment_replys">
-               <%= render :partial=>"blogs/new_comment", locals: { commentable: comment, form_of: 'comment'} %>
-            </div>
           </div>
-        </div>
-
-        <% if comment.comments.present? %>
-          <div class="" style="padding-left: 20px; padding-top: 7px;">
-            <%= render :partial=>"blogs/show_comment", locals: {commentable: comment} %>
-          </div>
-        <% end %>
-
       </div>
-    </div>
   </div>
+  
+  <% if comment.comments.present? %>
+    <div class="" style="padding-left: 20px; padding-top: 7px;">
+      <%= render :partial=>"blogs/show_comment", locals: {commentable: comment} %>
+    </div>
+  <% end %>
+
+
+</div>
 <% end %>
 
 </div>

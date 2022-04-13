@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @comment.commentable.user.first_name %></h1>
+    <p>
+      There is one comment on your <%= @comment.commentable.class %>,<br>
+    </p>
+    <p>
+      By: <%= @comment.user.first_name %>.<br>
+      Say: <%= @comment.comment_body %>
+      <br>
+      Log in and Show this comment: 
+      <%= link_to 'log in', root_url %>.
+    </p>
+    <p>Have a great day!</p>
+  </body>
+</html>

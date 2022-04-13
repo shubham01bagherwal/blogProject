@@ -3,3 +3,4 @@ class AddUserToBlogs < ActiveRecord::Migration[7.0]
     add_reference :blogs, :user
   end
 end
+ 

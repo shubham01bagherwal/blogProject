@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @like.likeable.user.first_name %></h1>
+    <p>
+      You got new like on your Blog <%= @like.likeable.name %>,<br>
+    </p>
+    <p>
+      By: <%= @like.user.first_name %>.<br>
+      Total likes: <%= @like.likeable.likes.count %>
+      <br>
+      Log in and Show more: 
+      <%= link_to 'log in', root_url %>.
+    </p>
+    <p>Have a great day!</p>
+  </body>
+</html>

@@ -23,14 +23,8 @@ Rails.application.routes.draw do
 
   get   'registrations/edit',   to: 'registrations#edit'
   patch 'registrations/update', to: 'registrations#update'
-
-  
-  
   get 'registrations/confirm_email', to: 'registrations#confirm_email', as: 'confirm_email'
-  
-  
-
-
+  post 'registrations/send_email_again', to: 'registrations#send_email_again', as: 'send_email_again'
 
   get    'sign_in',  to: 'sessions#new'
   post   'sign_in',  to: 'sessions#create', as: 'log_in'

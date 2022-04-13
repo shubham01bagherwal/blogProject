@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment.user_id = @current_user.id
     respond_to do |format|
       if @comment.save
+        UserMailer.comment_mail(@comment.id).deliver_later
         format.turbo_stream
       else
         format.turbo_stream

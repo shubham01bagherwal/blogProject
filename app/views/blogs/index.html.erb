@@ -13,7 +13,6 @@
   </div>
 </p>
 <!-- pagination logic -->
-
   <div class="row margin-twenty5-zero pagination-row">
     <div class="padding-zero"> 
       <ul class="pagination">
@@ -30,9 +29,10 @@
       </ul>
     </div>
   </div>
-
 <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6 pagination-info">
   <span class="pull-right"><%= page_entries_info(@blogs) %></span>
 </div>
 
-<div class=""> <%= will_paginate(@blogs,:previous_label => "Previous", :next_label => "Next;",:class=>"small-font",:outer_window => 1,:inner_window => 1) %></div>
+<div class="">
+  <%= will_paginate(@blogs,:previous_label => "Previous", :next_label => "Next;",:class=>"small-font",:outer_window => 1,:inner_window => 1) %>
+</div>

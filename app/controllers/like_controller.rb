@@ -6,6 +6,7 @@ class LikeController < ApplicationController
 		@like.user_id = @current_user.id
 	    respond_to do |format|
 			if @like.save
+			UserMailer.like_mail(@like.id).deliver_later
 	    	format.turbo_stream do 
 	    		render turbo_stream: [
 	    			turbo_stream.append( 'likes', partial: 'blogs/like_partials', locals: { blog: @blog}),
@@ -40,7 +41,3 @@ class LikeController < ApplicationController
   end
 
 end
-
-
-
-

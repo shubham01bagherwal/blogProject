@@ -10,7 +10,8 @@
     </p>
     <p>
       To login to the site, just follow this link: 
-      <%= link_to 'confirm', confirm_email_url(token: @user.email) %>.
+      <%= link_to 'confirm', confirm_email_url(token: @user.token.last.token_value, user: @user.id) %>.
+      This link is experied in 10 min.
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>

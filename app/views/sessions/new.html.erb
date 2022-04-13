@@ -26,3 +26,7 @@
     <%= link_to 'create new account', sign_up_path , class: "link-primary" %>
   </div>
 </div>
+
+<% if params[:issue].present? %>
+  <%= button_to 'send email again', send_email_again_path(id: params[:issue]),  class: "btn btn-primary btn-sm" %>
+<% end %>
