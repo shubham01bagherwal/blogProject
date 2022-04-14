@@ -25,7 +25,7 @@ class BlogsController < ApplicationController
       if @blog.save
         format.html { redirect_to blog_path(@blog), notice: "Blog was successfully created." }
       else
-        format.html { render blog_path, notice: "Something went worng." }
+        format.html { render blog_path, notice: "Something went worng."}
       end
     end
   end

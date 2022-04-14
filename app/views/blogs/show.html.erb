@@ -7,7 +7,7 @@
       <%= link_to "Edit this blog", edit_blog_path(@blog), class: "btn btn-primary" %> 
     </div>
     <div class="p-1">
-      <%= button_to "Destroy this blog", @blog, method: :delete, class: "btn btn-danger", onclick: "return confirmDestroy('Are you sure ?')"  %>
+      <%= button_to "Destroy this blog", @blog, method: :delete, class: "btn btn-danger", onclick: "return confirmDestroy('Are you sure ?')" %>
     </div>
   <% end %>
   <div class="p-1">
