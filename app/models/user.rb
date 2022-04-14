@@ -10,6 +10,6 @@ class User < ApplicationRecord
 	has_many :likes, as: :likeable, dependent: :destroy
 
 	validates :email, presence: true, uniqueness: true, format: { with: Devise.email_regexp }
-	validates :password, confirmation: true, confirmation: { case_sensitive: true }
+	#validates :password, confirmation: true, confirmation: { case_sensitive: true }
 
 end
