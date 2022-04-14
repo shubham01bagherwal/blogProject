@@ -15,8 +15,6 @@ Rails.application.routes.draw do
     
   end
 
-
-
   # Extra paths
   get  'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
